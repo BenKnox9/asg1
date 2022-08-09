@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birds of Aoteoroa</title>
+    <link preload rel="stylesheet" href="style.css">
+    <script defer src="birdTextBox.js" ></script>
+    <script defer src="" ></script>
+    <script defer src="Assignment.js" ></script>
+
+</head>
+
+
+    <body>
+        <header>
+            <h1>Birds of Aoteoroa</h1>
+        </header>
+       
+        <div class="sidebar">
+            <h2>Filter Birds</h2>
+            <form id="search_bar">
+                <input id="search" type="text" autocomplete="off" placeholder="search..." >
+            </form>   
+            <label for="sort-by">Sort by </label>
+            <select name="sort-by" id="sort-by">
+            <option value="short-long" selected>Shortest to longest</option>
+            <option value="long-short" >Longest to shortest</option>
+            <option value="light-heavy" >Lightest to heaviest</option>
+            <option value="heavy-light" >Heaviest to lightest</option>
+            </select>
+
+            <label for="sort-cons">Conservation Status</label>
+            <select name="sort-cons" id="sort-cons">
+            <option value="all" selected>All</option>
+            <option value="notThreatened" >Not Threatened</option>
+            <option value="naturallyUncommon" >Naturally Uncommon</option>
+            <option value="relict" >Relict</option>
+            <option value="recovering" >Recovering</option>
+            <option value="declining" >Declining</option>
+            <option value="nationallyIncreasing" >Nationally Increasing</option>
+            <option value="nationallyVulnerable" >Nationally Vulnerable</option>
+            <option value="nationallyEndangered" >Nationally Endangered</option>
+            <option value="nationallyCritical" >Nationally Critical</option>
+            <option value="dataDeficient" >Data Deficient</option>
+            </select>
+
+            <h2>Conservation Status</h2>
+                <div class = "NotThreatened">
+                    <div></div>
+                    <p>Not Threatened</p> 
+                </div>
+                <div class = "NaturallyUncommon">
+                    <div></div>
+                    <p>Naturally Uncommon</p>
+                </div>
+                <div class = "Relict">
+                    <div></div>
+                    <p>Relict</p>
+                </div>
+                <div class = "Recovering">
+                    <div></div>
+                    <p>Recovering</p> 
+                </div>
+                <div class = "Declining">
+                    <div></div>
+                    <p>Declining</p> 
+                </div>
+                <div class = "NationallyIncreasing">
+                    <div></div>
+                    <p>Nationally Increasing</p>
+                </div>
+                <div class = "NationallyVulnerable">
+                    <div></div>
+                    <p>Nationally Vulnerable</p>
+                </div>
+                <div class = "NationallyEndangered">
+                    <div></div>
+                    <p>Nationally Endangered</p>
+                </div>
+                <div class = "NationallyCritical">
+                    <div></div>
+                    <p>Nationally Critical</p>
+                </div>
+                <div class = "DataDeficient">
+                    <div></div>
+                <p>Data Deficient</p>
+                </div>
+
+
+           
+        </div>
+
+       <main id = "all_birds_container">
+        
+       
+       </main>
+       
+       <footer>
+           <p>Data licenced from <a href = "https://www.birdsnz.org.nz"> Birds New Zealand</a></p>
+       </footer>
+    </body>
+</html>
