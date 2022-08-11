@@ -1,4 +1,4 @@
-function createBirdTextBox(BirdTextClass, birdpicture, colour, primary_name, credit, english_name, scientific_name, order, family, status, length, weight) {
+function createBirdTextBox(BirdTextClass, birdpicture, colour, primary_name, credit, english_name, scientific_name, order, family, status, length, weight, label1, label2, label3, label4, label5, label6) {
     const birdBox = document.createElement('div');
     birdBox.setAttribute('class', BirdTextClass);
 
@@ -20,6 +20,13 @@ function createBirdTextBox(BirdTextClass, birdpicture, colour, primary_name, cre
     birdBox.append(newElement('p', 'birdStatus', status));
     birdBox.append(newElement('p', 'birdLength', length));
     birdBox.append(newElement('p', 'birdWeight', weight));
+    birdBox.append(newElement('p', 'label', label1));
+    birdBox.append(newElement('p', 'label', label2));
+    birdBox.append(newElement('p', 'label', label3));
+    birdBox.append(newElement('p', 'label', label4));
+    birdBox.append(newElement('p', 'label', label5));
+    birdBox.append(newElement('p', 'label', label6));
+
 
 
     switch (status) {
@@ -61,7 +68,7 @@ function createBirdTextBox(BirdTextClass, birdpicture, colour, primary_name, cre
 
 
 
-    document.querySelector('main').prepend(birdBox);
+    document.querySelector('main').append(birdBox);
 }
 function newElement(type, className, content) {
     const e = document.createElement(type);

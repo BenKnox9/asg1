@@ -1,6 +1,8 @@
 // const fetch = require('node-fetch'); // uncomment this line for version <= 16.x >
 const API_URL = "nzbird.json";
 
+var sortBy = "";
+var consStatus = "";
 
 async function main() {
 
@@ -11,41 +13,122 @@ async function main() {
     let birds = await response.json(); // .json() calls JSON.parse() for us
 
 
-    /* Problems:
-
-    - search bar, how to hide/show based on what should be shown
-    - potentially make the sort by change the value of conservation status to ALL when another
-    sorting method is chosen
-    
- 
+    /* 
     - provide css for smaller screens
     - get credits 
     - labels for primary name etc.
     - get other names
-    - potentially sort the horizontal scrolling
     */
 
 
+    /*Sort the birds from shortest to longest and use that as the initial state of the website */
+    birds.sort(function compare(a, b) {
+        return a.size.length.value - b.size.length.value;
+    });
+    for (b in birds) {
+
+        createBirdTextBox(
+            "eachBirdBox",
+            birds[b].photo.source,
+            null,
+            birds[b].primary_name,
+            "Photo by " + birds[b].photo.credit,
+            birds[b].english_name,
+            birds[b].scientific_name,
+            birds[b].order,
+            birds[b].family,
+            birds[b].status,
+            birds[b].size.length.value + birds[b].size.length.units,
+            birds[b].size.weight.value + birds[b].size.weight.units,
+            "Scientific name ",
+            "Order ",
+            "Family ",
+            "Status ",
+            "Length ",
+            "Weight ",
+        )
+
+    }
 
 
+    /** Function which takes in a string and checks if it is a substring of the descriptions of any of the birds 
+     * changes the display of the birds tile to none if it does not contain the search substring. Function is called by
+     * another function clickFunction, which uses an event listener for the button.
+    */
+    function searchBarFunction() {
+        const search_bar = document.querySelector('#search')
+        var userString = search_bar.value;
+        var searchVal = userString.toLowerCase();
 
-    function loadAllBirds() {
+        console.log("search val is " + searchVal);
 
-        /*Sort the birds from shortest to longest and use that as the initial state of the website */
-        birds.sort(function compare(a, b) {
-            return b.size.length.value - a.size.length.value;
-        });
-        for (let i = 0; i < birds.length; i++) {
-            // console.log(birds[i].size.length.value + " " + birds[i].primary_name);
+        for (var b = 0; b < birds.length; b++) {
+
+            var norm = (birds[b].primary_name).normalize("NFC");
+            // console.log(norm);
+            if (norm.indexOf(searchVal) != -1) console.log(birds[b].primary_name);
+            else if ((birds[b].english_name).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
+            else if ((birds[b].scientific_name).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
+            else if ((birds[b].order).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
+            else if ((birds[b].family).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
+            else if ((birds[b].photo.credit).toLowerCase().indexOf(searchVal) !== -1) console.log(birds[b].primary_name);
+
+            else {
+                let boxes = document.querySelectorAll(".eachBirdBox");
+                for (i = 0; i < boxes.length; i++) {
+                    if (i == b) {
+                        boxes[i].style.display = "none";
+                    }
+                }
+            }
         }
-        for (b in birds) {
 
+
+    }
+
+
+
+    /** Function which sorts birds through values like length and weight
+     * function is called by another function, clickFunction which uses an eventlistener for a button.
+     * function also has a reset, which calles a function which clears the HTML in main.
+     */
+    function sortBirdsBy() {
+
+        var select = document.getElementById('sort-by');
+        var sortBy = select.options[select.selectedIndex].value;
+        // console.log(sortBy);
+        reset();
+        switch (sortBy) {
+            case 'short-long':
+                birds.sort(function compare(a, b) {
+                    return a.size.length.value - b.size.length.value;
+                });
+                break;
+            case 'long-short':
+                birds.sort(function compare(a, b) {
+                    return b.size.length.value - a.size.length.value;
+                });
+                break;
+            case 'light-heavy':
+                birds.sort(function compare(a, b) {
+                    return a.size.weight.value - b.size.weight.value;
+                });
+                break;
+            case 'heavy-light':
+                birds.sort(function compare(a, b) {
+                    return b.size.weight.value - a.size.weight.value;
+                });
+                break;
+
+        }
+
+        for (b in birds) {
             createBirdTextBox(
                 "eachBirdBox",
                 birds[b].photo.source,
                 null,
                 birds[b].primary_name,
-                "Photo by " + birds[b].photo.credit,
+                "Photo By " + birds[b].photo.credit,
                 birds[b].english_name,
                 birds[b].scientific_name,
                 birds[b].order,
@@ -53,84 +136,24 @@ async function main() {
                 birds[b].status,
                 birds[b].size.length.value + birds[b].size.length.units,
                 birds[b].size.weight.value + birds[b].size.weight.units,
+                "Scientific name ",
+                "Order ",
+                "Family ",
+                "Status ",
+                "Length ",
+                "Weight ",
             )
-
         }
-
-
-        /** Event Listener for a change in the dropdown menu, changes the sorting from shortest to longest */
-        const input = document.getElementById('sort-by')
-        input.addEventListener('change', (e) => {
-            reset();
-            const choice = e.target.value;
-            console.log(choice);
-
-            switch (choice) {
-                case 'short-long':
-                    birds.sort(function compare(a, b) {
-                        return b.size.length.value - a.size.length.value;
-                    });
-
-                    break;
-                case 'long-short':
-                    birds.sort(function compare(a, b) {
-                        return a.size.length.value - b.size.length.value;
-                    });
-
-                    break;
-                case 'light-heavy':
-                    birds.sort(function compare(a, b) {
-                        return b.size.weight.value - a.size.weight.value;
-                    });
-                    for (let i = 0; i < birds.length; i++) {
-
-                    }
-                    break;
-                case 'heavy-light':
-                    birds.sort(function compare(a, b) {
-                        return a.size.weight.value - b.size.weight.value;
-                    });
-                    for (let i = 0; i < birds.length; i++) {
-
-                    }
-                    break;
-
-            }
-
-
-
-
-            for (b in birds) {
-
-                createBirdTextBox(
-                    "eachBirdBox",
-                    birds[b].photo.source,
-                    null,
-                    birds[b].primary_name,
-                    "Photo By " + birds[b].photo.credit,
-                    birds[b].english_name,
-                    birds[b].scientific_name,
-                    birds[b].order,
-                    birds[b].family,
-                    birds[b].status,
-                    birds[b].size.length.value + birds[b].size.length.units,
-                    birds[b].size.weight.value + birds[b].size.weight.units,
-                )
-                //let birdpicture = document.getElementsByClassName("birdImg");
-                //birdpicture.src = "data/images/stitchbird-2.jpg";
-                // '"' + birds[b].photo.source + '"';
-            }
-        });
-
     }
-    loadAllBirds();
-    const input = document.getElementById('sort-cons')
-    input.addEventListener('change', (e) => {
-        // reset();
-        const conservation = e.target.value;
-        console.log(conservation);
 
-        switch (conservation) {
+    /** Function to filter birds by their conservation status, this function is also called by clickFunction */
+    function sortStatus() {
+        const input = document.getElementById('sort-cons')
+        var consStatus = input.options[input.selectedIndex].value;
+        // reset();
+        // console.log(consStatus);
+
+        switch (consStatus) {
             case 'all':
                 document.querySelectorAll(".eachBirdBox").forEach(a => a.style.display = "inline");
                 break;
@@ -174,28 +197,19 @@ async function main() {
                 document.querySelectorAll(".eachBirdBox").forEach(a => a.style.display = "none");
                 document.querySelectorAll("#dataDeficient").forEach(a => a.style.display = "inline");
                 break;
-
-        }
-
-
-
-    });
-
-    const search_bar = document.querySelector('#search')
-    search_bar.addEventListener('keydown', searchBar);
-    function searchBar(event) {
-        const text = event.target.value.toLowerCase();
-        document.querySelectorAll(".eachBirdBox").forEach(a => a.style.display = "none");
-        for (b in birds) {
-            if (birds[b].primary_name.toLowerCase().includes(text)) {
-                console.log(birds[b].primary_name + "this bird was the one")
-            } else if (birds[b].primary_name.toLowerCase().includes(text)) {
-
-
-
-            }
         }
     }
+
+    /** Has an eventListener for the button and calls all other methods for sorting */
+    const btn = document.querySelector('button')
+    btn.addEventListener("click", clickFunction);
+    function clickFunction() {
+        console.log("The button has been pressed");
+        sortBirdsBy();
+        sortStatus();
+        searchBarFunction();
+    }
+
 }
 
 main();
