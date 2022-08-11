@@ -63,7 +63,13 @@ async function main() {
         console.log("search val is " + searchVal);
 
         for (var b = 0; b < birds.length; b++) {
-
+            let isSubString = false;
+            for (otherName in birds[b].other_names) {
+                if (birds[b].other_names[otherName].toLowerCase().indexOf(searchVal) != -1) {
+                    console.log("other names thingy is working");
+                    isSubString = true;
+                }
+            }
             var norm = (birds[b].primary_name).normalize("NFC");
             // console.log(norm);
             if (norm.indexOf(searchVal) != -1) console.log(birds[b].primary_name);
@@ -72,7 +78,7 @@ async function main() {
             else if ((birds[b].order).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
             else if ((birds[b].family).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
             else if ((birds[b].photo.credit).toLowerCase().indexOf(searchVal) !== -1) console.log(birds[b].primary_name);
-
+            else if (isSubString) console.log(birds[b].primary_name);
             else {
                 let boxes = document.querySelectorAll(".eachBirdBox");
                 for (i = 0; i < boxes.length; i++) {

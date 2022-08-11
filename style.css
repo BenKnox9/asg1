@@ -92,7 +92,7 @@ main {
 
 /* This should be where I start to use the other design for phones/tablets */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
 
 
     .sidebar {
