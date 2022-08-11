@@ -58,7 +58,7 @@ async function main() {
         const search_bar = document.querySelector('#searchMin')
         var min_weight = parseFloat(search_bar.value);
 
-        if (Number.isNaN(max_weight)) return;
+        if (Number.isNaN(min_weight)) return;
         else {
             for (b in birds) {
                 var i = parseFloat(birds[b].size.weight.value);
@@ -273,6 +273,7 @@ async function main() {
         searchBarFunction();
         minWeight();
         maxWeight();
+
     }
 }
 
