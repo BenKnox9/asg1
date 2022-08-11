@@ -122,6 +122,8 @@ main {
         font-size: smaller;
     }
 
+    
+
     h1 {
         left: 20% !important;
     }
@@ -156,6 +158,19 @@ main {
     #nationallyCritical div,
     #dataDeficient div {
         left: 15em !important;
+        bottom: 2.7em !important;
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    .primaryName{
+        bottom:5.5em !important;
+    }
+    .photoCred{
+        bottom:8.6em !important
+    }
+    .engName{
+        bottom: 6.2em !important;
     }
 
     .scienceName {
@@ -164,6 +179,12 @@ main {
 
     .birdStatus {
         width: 6px;
+    }
+
+    .label{
+        bottom: 25em !important;
+        margin: 16px;
+        right: 2em;
     }
 
 }
@@ -188,6 +209,7 @@ main {
     #nationallyDecreasing div,
     #nationallyEndangered div,
     #nationallyVulnerable div,
+    #nationallyIncreasing div,
     #nationallyCritical div,
     #dataDeficient div {
         left: 14em !important;
