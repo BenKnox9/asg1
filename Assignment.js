@@ -3,6 +3,9 @@ const API_URL = "nzbird.json";
 
 var sortBy = "";
 var consStatus = "";
+var count = 0;
+var statusCount = 0;
+
 
 async function main() {
 
@@ -51,6 +54,57 @@ async function main() {
     }
 
 
+    function minWeight() {
+        const search_bar = document.querySelector('#searchMin')
+        var min_weight = parseFloat(search_bar.value);
+
+        if (Number.isNaN(max_weight)) return;
+        else {
+            for (b in birds) {
+                var i = parseFloat(birds[b].size.weight.value);
+                if (i > min_weight);
+                else {
+                    let boxes = document.querySelectorAll(".eachBirdBox");
+                    for (i = 0; i < boxes.length; i++) {
+                        if (i == b) {
+                            boxes[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    function maxWeight() {
+        const search_bar = document.querySelector('#searchMax')
+        var max_weight = parseFloat(search_bar.value);
+
+        if (Number.isNaN(max_weight)) return;
+        else {
+            console.log(max_weight);
+            for (b in birds) {
+                var i = parseFloat(birds[b].size.weight.value);
+                if (i < max_weight);
+                else {
+                    let boxes = document.querySelectorAll(".eachBirdBox");
+                    for (i = 0; i < boxes.length; i++) {
+                        if (i == b) {
+                            boxes[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
     /** Function which takes in a string and checks if it is a substring of the descriptions of any of the birds 
      * changes the display of the birds tile to none if it does not contain the search substring. Function is called by
      * another function clickFunction, which uses an event listener for the button.
@@ -66,29 +120,30 @@ async function main() {
             let isSubString = false;
             for (otherName in birds[b].other_names) {
                 if (birds[b].other_names[otherName].toLowerCase().indexOf(searchVal) != -1) {
-                    console.log("other names thingy is working");
                     isSubString = true;
                 }
             }
             var norm = (birds[b].primary_name).normalize("NFC");
             // console.log(norm);
-            if (norm.indexOf(searchVal) != -1) console.log(birds[b].primary_name);
-            else if ((birds[b].english_name).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
-            else if ((birds[b].scientific_name).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
-            else if ((birds[b].order).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
-            else if ((birds[b].family).toLowerCase().indexOf(searchVal) != -1) console.log(birds[b].primary_name);
-            else if ((birds[b].photo.credit).toLowerCase().indexOf(searchVal) !== -1) console.log(birds[b].primary_name);
-            else if (isSubString) console.log(birds[b].primary_name);
+            if (norm.indexOf(searchVal) != -1); //console.log(birds[b].primary_name);
+            else if ((birds[b].english_name).toLowerCase().indexOf(searchVal) != -1); // console.log(birds[b].primary_name);
+            else if ((birds[b].scientific_name).toLowerCase().indexOf(searchVal) != -1); // console.log(birds[b].primary_name);
+            else if ((birds[b].order).toLowerCase().indexOf(searchVal) != -1); // console.log(birds[b].primary_name);
+            else if ((birds[b].family).toLowerCase().indexOf(searchVal) != -1); // console.log(birds[b].primary_name);
+            else if ((birds[b].photo.credit).toLowerCase().indexOf(searchVal) !== -1); // console.log(birds[b].primary_name);
+            else if (isSubString); // console.log(birds[b].primary_name);
             else {
+
                 let boxes = document.querySelectorAll(".eachBirdBox");
                 for (i = 0; i < boxes.length; i++) {
                     if (i == b) {
                         boxes[i].style.display = "none";
+                        // console.log("this is the id of the bird  " + id);
                     }
+
                 }
             }
         }
-
 
     }
 
@@ -125,6 +180,8 @@ async function main() {
                     return b.size.weight.value - a.size.weight.value;
                 });
                 break;
+
+
 
         }
 
@@ -214,8 +271,9 @@ async function main() {
         sortBirdsBy();
         sortStatus();
         searchBarFunction();
+        minWeight();
+        maxWeight();
     }
-
 }
 
 main();
@@ -224,4 +282,12 @@ main();
 function reset() {
     let e = document.querySelector('main');
     e.innerHTML = "";
+}
+
+
+function newElement(type, className, content) {
+    const e = document.createElement(type);
+    e.setAttribute('class', className);
+    e.textContent = content;
+    return e;
 }

@@ -23,6 +23,12 @@
             <form id="search_bar">
                 <input id="search" type="text" autocomplete="off" placeholder="search..." >
             </form>   
+            <form id="minWeight">
+                <input id="searchMin" type="text" autocomplete="off" placeholder="minimum weight" >
+            </form>  
+            <form id="maxWeight">
+                <input id="searchMax" type="text" autocomplete="off" placeholder="maximum weight" >
+            </form>  
             <label for="sort-by">Sort by </label>
             <select name="sort-by" id="sort-by">
             <option value="short-long" selected>Shortest to longest</option>
@@ -45,6 +51,7 @@
             <option value="nationallyCritical" >Nationally Critical</option>
             <option value="dataDeficient" >Data Deficient</option>
             </select>
+            
 
             <button type="button">Filter Results</button>
 
@@ -89,6 +96,11 @@
                     <div></div>
                 <p>Data Deficient</p>
                 </div>
+
+                <div id = "numResults">
+
+                </div>
+
 
                 <div id ="acknowledgement">
                     <p>Conservation status from the <a href = "https://www.doc.govt.nz">DOC website</a></p>

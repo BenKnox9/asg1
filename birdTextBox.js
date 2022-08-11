@@ -65,9 +65,6 @@ function createBirdTextBox(BirdTextClass, birdpicture, colour, primary_name, cre
 
     }
 
-
-
-
     document.querySelector('main').append(birdBox);
 }
 function newElement(type, className, content) {
