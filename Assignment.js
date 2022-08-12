@@ -8,21 +8,8 @@ var statusCount = 0;
 
 
 async function main() {
-
-
-    // wait for the server to respond
     let response = await fetch(API_URL);
-    // wait for the data to load 
-    let birds = await response.json(); // .json() calls JSON.parse() for us
-
-
-    /* 
-    - provide css for smaller screens
-    - get credits 
-    - labels for primary name etc.
-    - get other names
-    */
-
+    let birds = await response.json();
 
     /*Sort the birds from shortest to longest and use that as the initial state of the website */
     birds.sort(function compare(a, b) {
@@ -54,6 +41,7 @@ async function main() {
     }
 
 
+    /** Filter the birds, only show those which are above a minium weight input */
     function minWeight() {
         const search_bar = document.querySelector('#searchMin')
         var min_weight = parseFloat(search_bar.value);
@@ -76,7 +64,7 @@ async function main() {
     }
 
 
-
+    /** Filter the birds, only show those which are below a maximum weight input */
     function maxWeight() {
         const search_bar = document.querySelector('#searchMax')
         var max_weight = parseFloat(search_bar.value);
@@ -180,9 +168,6 @@ async function main() {
                     return b.size.weight.value - a.size.weight.value;
                 });
                 break;
-
-
-
         }
 
         for (b in birds) {
@@ -213,8 +198,6 @@ async function main() {
     function sortStatus() {
         const input = document.getElementById('sort-cons')
         var consStatus = input.options[input.selectedIndex].value;
-        // reset();
-        // console.log(consStatus);
 
         switch (consStatus) {
             case 'all':
@@ -279,7 +262,8 @@ async function main() {
 
 main();
 
-
+/** Function which just empties main, when called the sortBirdsBy method 
+ * will repopulate with whatever sorting method is chosen */
 function reset() {
     let e = document.querySelector('main');
     e.innerHTML = "";

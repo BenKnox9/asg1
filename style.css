@@ -54,14 +54,6 @@ main {
     flex-wrap: wrap;
     justify-content: center;
 
-
-
-    /*
-    display: grid;
-    grid-template-columns: 1fr, 2fr, 2fr, 1fr;
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
-    grid-column: 2;
-*/
 }
 
 .sidebar {
@@ -106,7 +98,6 @@ main {
 }
 
 
-/* This should be where I start to use the other design for phones/tablets */
 
 @media screen and (max-width: 620px) {
 
@@ -211,49 +202,6 @@ main {
     }
 
 }
-/*
-@media screen and (min-width: 1150px) {
-    #notThreatened div,
-    #naturallyUncommon div,
-    #relict div,
-    #recovering div,
-    #declining div,
-    #nationallyDecreasing div,
-    #nationallyEndangered div,
-    #nationallyVulnerable div,
-    #nationallyCritical div,
-    #dataDeficient div {
-        left: 20em !important;
-        bottom: 2.7em !important;
-        width: 45px !important;
-        height: 45px !important;
-    }
-    .eachBirdBox {
-        width: 320px !important;
-    
-    }
-
-    .primaryName{
-        bottom:6em !important;
-    }
-    .photoCred{
-        bottom:9.5em !important
-    }
-    .engName{
-        bottom: 6.2em !important;
-    }
-    .scienceName,
-    .birdOrder,
-    .birdFamily,
-    .birdStatus,
-    .birdLength,
-    .birdWeight {
-        position :relative;
-        left: 12em !important;
-    }
-
-}
-*/
 
 #acknowledgement p {
     font-size: 10px !important;
@@ -299,12 +247,7 @@ div>p {
     padding-left: 20px;
     padding-right: 20px;
     position: static;
-
-
-
 }
-
-
 
 div p {
     color: black;
@@ -618,20 +561,10 @@ img {
     right: 10px;
 }
 
-
-
-
-
-
-
-
 .eachBirdBox {
     align-items: flex-start;
     width: 42vh;
 }
-
-
-
 
 
 .eachBirdBox .primaryName {
@@ -655,9 +588,7 @@ img {
     bottom: 7em;
     font-size: 18px;
     font-weight: bolder;
-
 }
-
 
 .scienceName,
 .birdOrder,

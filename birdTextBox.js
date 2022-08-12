@@ -16,7 +16,6 @@ function createBirdTextBox(BirdTextClass, birdpicture, colour, primary_name, cre
     birdBox.append(newElement('p', 'scienceName', scientific_name));
     birdBox.append(newElement('p', 'birdOrder', order));
     birdBox.append(newElement('p', 'birdFamily', family));
-    //birdBox.append(newElement('p', 'birdOtherNames', other_names));
     birdBox.append(newElement('p', 'birdStatus', status));
     birdBox.append(newElement('p', 'birdLength', length));
     birdBox.append(newElement('p', 'birdWeight', weight));
@@ -61,7 +60,6 @@ function createBirdTextBox(BirdTextClass, birdpicture, colour, primary_name, cre
             birdBox.setAttribute("id", "dataDeficient");
             break;
         default:
-        // code block
 
     }
 
