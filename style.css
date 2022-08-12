@@ -22,7 +22,7 @@ h2 {
 body {
     background: rgb(204, 204, 204);
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 0.9fr 2.8fr;
     grid-template-rows: 85px 1fr 55px;
     gap: 0px;
     min-height: 100vh;
@@ -45,7 +45,7 @@ header {
 
 main {
     background: rgb(204, 204, 204);
-    width: 75vw;
+    width: 73vw;
     grid-row: 2;
     grid-column: 2;
 
@@ -82,11 +82,27 @@ main {
 }
 
 
+@media screen and (min-width: 1150px) {
+.eachBirdBox{
+    width: 320px !important;
+}
+.scienceName,
+.birdOrder,
+.birdFamily,
+.birdStatus,
+.birdLength,
+.birdWeight {
+    position:relative;
+    left: 12em !important;
+}
+
+}
 
 @media screen and (max-width: 900px) {
     .sidebar {
         font-size: 10px
     }
+
 }
 
 
@@ -144,7 +160,7 @@ main {
         font-size: 10px !important;
     }
     img {
-        height: 40% !important;
+        height: 33% !important;
     }
 
     #notThreatened div,
@@ -157,7 +173,7 @@ main {
     #nationallyVulnerable div,
     #nationallyCritical div,
     #dataDeficient div {
-        left: 15em !important;
+        left: 14em !important;
         bottom: 2.7em !important;
         width: 35px !important;
         height: 35px !important;
@@ -186,21 +202,17 @@ main {
         margin: 16px;
         right: 2em;
     }
-
-}
-
-
-@media screen and (max-width: 500px) {
-
+    #searchMin, #searchMax{
+        display: none !important;
+    }
     .eachBirdBox {
         width: 30vh !important;
         font-size: small;
     }
 
-    img {
-        height: 35% !important;
-    }
-
+}
+/*
+@media screen and (min-width: 1150px) {
     #notThreatened div,
     #naturallyUncommon div,
     #relict div,
@@ -209,22 +221,39 @@ main {
     #nationallyDecreasing div,
     #nationallyEndangered div,
     #nationallyVulnerable div,
-    #nationallyIncreasing div,
     #nationallyCritical div,
     #dataDeficient div {
-        left: 14em !important;
+        left: 20em !important;
+        bottom: 2.7em !important;
+        width: 45px !important;
+        height: 45px !important;
+    }
+    .eachBirdBox {
+        width: 320px !important;
+    
     }
 
-    #searchMin, #searchMax{
-        display: none !important;
+    .primaryName{
+        bottom:6em !important;
     }
-
-
+    .photoCred{
+        bottom:9.5em !important
+    }
+    .engName{
+        bottom: 6.2em !important;
+    }
+    .scienceName,
+    .birdOrder,
+    .birdFamily,
+    .birdStatus,
+    .birdLength,
+    .birdWeight {
+        position :relative;
+        left: 12em !important;
+    }
 
 }
-
-
-
+*/
 
 #acknowledgement p {
     font-size: 10px !important;
@@ -318,8 +347,8 @@ img {
 
 
 #notThreatened div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #02a028;
     border: solid whitesmoke 2px;
@@ -330,8 +359,8 @@ img {
 }
 
 #naturallyUncommon div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #649a31;
     border: solid whitesmoke 2px;
@@ -341,8 +370,8 @@ img {
 }
 
 #relict div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #99cb68;
     border: solid whitesmoke 2px;
@@ -352,8 +381,8 @@ img {
 }
 
 #recovering div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #fecc33;
     border: solid whitesmoke 2px;
@@ -363,8 +392,8 @@ img {
 }
 
 #declining div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #fe9a01;
     border: solid whitesmoke 2px;
@@ -374,8 +403,8 @@ img {
 }
 
 #nationallyIncreasing div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #c26967;
     border: solid whitesmoke 2px;
@@ -385,8 +414,8 @@ img {
 }
 
 #nationallyVulnerable div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #9b0000;
     border: solid whitesmoke 2px;
@@ -396,8 +425,8 @@ img {
 }
 
 #nationallyEndangered div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #660032;
     border: solid whitesmoke 2px;
@@ -407,8 +436,8 @@ img {
 }
 
 #nationallyCritical div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: #320033;
     border: solid whitesmoke 2px;
@@ -418,8 +447,8 @@ img {
 }
 
 #dataDeficient div {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: black;
     border: solid whitesmoke 2px;
@@ -617,7 +646,7 @@ img {
 
 .photoCred {
     position: relative;
-    bottom: 10em;
+    bottom: 9.5em;
 
 }
 
