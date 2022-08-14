@@ -9,6 +9,7 @@ var statusCount = 0;
 
 async function main() {
     let response = await fetch(API_URL);
+
     let birds = await response.json();
 
     /*Sort the birds from shortest to longest and use that as the initial state of the website */
